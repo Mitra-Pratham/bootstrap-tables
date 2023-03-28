@@ -12,20 +12,32 @@ let textArray = [];
 // ]
 
 function updateBox(e,val){
+    $('#box h3').empty();
+    $('#box h3').append(getTitle(val));
     $('#box p').empty();
     $('#box p').append(getText(val));
     $(`.row-border`).removeClass('row-border');
     $($(e).parent('td').parent('tr')).addClass('row-border');
 }
 
+function getTitle(val){
+    let tempArray = textArray.find((item) => {
+        return item._id === val ? item : '';
+    });
+    return tempArray.ruleName;
+}
+
 function getText(val){
-    return textArray[val].about;
+    let tempArray = textArray.find((item) => {
+        return item._id === val ? item : '';
+    });
+    return tempArray.about;
 }
 
 function operateFormatter(value, row, index) {
     textArray.push(row);
     return [
-      `<button class="btn btn-primary btn-sm" onClick="updateBox(this,${row.index})" title="View Details">`,
+      `<button class="btn btn-primary btn-sm" onClick="updateBox(this,'${row._id}')" title="View Details">`,
       'View Details',
       '</button>  ',
     ].join('')
