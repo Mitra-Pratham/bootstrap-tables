@@ -1,0 +1,13 @@
+.row-border{
+    outline: #000 solid 2px;
+}
+
+.table-bordered>:not(caption)>*>* {
+    border-width: 0px 1px 1px 1px !important;
+}
+
+#box{
+position: fixed;
+right: 0;
+background-color: white;
+}
