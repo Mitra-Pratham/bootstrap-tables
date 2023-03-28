@@ -38,7 +38,7 @@ function operateFormatter(value, row, index) {
 
 $('#table').bootstrapTable({
     // data: tableData,
-    url: "../js/generated.json",
+    url: "js/generated.json",
     pagination: true,
     showFooter: true,
     classes: 'table table-bordered table-hover table-striped table-sm',
