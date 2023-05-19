@@ -47,6 +47,9 @@ function operateFormatter(value, row, index) {
     return `${value.substr(0,100)}...`
   }
 
+  function linkFormatter(value, row , index){
+    return `<a class="new-anchor" href="#">${value}</a>`
+  }
 
 $('#table').bootstrapTable({
     // data: tableData,
@@ -74,12 +77,14 @@ $('#table').bootstrapTable({
             field: 'ruleName',
             title: 'Rule',
             width: '10',
-            widthUnit: 'vw'
+            widthUnit: 'vw',
+            formatter: linkFormatter,
         }, {
             field: 'objectName',
             title: 'Object',
             width: '10',
-            widthUnit: 'vw'
+            widthUnit: 'vw',
+            formatter: linkFormatter,
         }, {
             field: 'about',
             title: 'Description',

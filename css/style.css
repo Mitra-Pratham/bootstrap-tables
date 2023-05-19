@@ -11,3 +11,11 @@ position: fixed;
 right: 0;
 background-color: white;
 }
+
+.new-anchor{
+text-decoration:none ;
+}
+
+.new-anchor:hover{
+    text-decoration: underline;
+}
