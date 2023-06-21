@@ -66,6 +66,7 @@ $('#table').bootstrapTable({
     showExport: true,
     // clickToSelect: true,
     search: true,
+    searchHighlight:true,
     columns: [
         {
             field: 'state',
