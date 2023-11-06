@@ -11,7 +11,7 @@ let textArray = [];
 //     }
 // ]
 
-function updateBox(e,val){
+function updateBox(e, val) {
     $('#box h3').empty();
     $('#box h3').append(getTitle(val));
     $('#box p').empty();
@@ -20,14 +20,14 @@ function updateBox(e,val){
     $($(e).parent('td').parent('tr')).addClass('row-border');
 }
 
-function getTitle(val){
+function getTitle(val) {
     let tempArray = textArray.find((item) => {
         return item._id === val ? item : '';
     });
     return tempArray.ruleName;
 }
 
-function getText(val){
+function getText(val) {
     let tempArray = textArray.find((item) => {
         return item._id === val ? item : '';
     });
@@ -37,19 +37,21 @@ function getText(val){
 function operateFormatter(value, row, index) {
     textArray.push(row);
     return [
-      `<button class="btn btn-primary btn-sm" onClick="updateBox(this,'${row._id}')" title="View Details">`,
-      'View Details',
-      '</button>  ',
+        `<button class="btn btn-primary btn-sm" onClick="updateBox(this,'${row._id}')" title="View Details">`,
+        'View Details',
+        '</button>  ',
     ].join('')
-  }
+}
 
-  function textFormatter(value, row, index) {
-    return `${value.substr(0,100)}...`
-  }
+function textFormatter(value, row, index) {
+    // return `${value.substr(0,100)}...`
+    return `${value}`
 
-  function linkFormatter(value, row , index){
+}
+
+function linkFormatter(value, row, index) {
     return `<a class="new-anchor" href="#">${value}</a>`
-  }
+}
 
 $('#table').bootstrapTable({
     // data: tableData,
@@ -66,7 +68,19 @@ $('#table').bootstrapTable({
     showExport: true,
     // clickToSelect: true,
     search: true,
-    searchHighlight:true,
+    searchHighlight: true,
+    // exportDataType: $(this).val(),
+    exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel', 'pdf'],
+    exportOptions: {
+        jspdf: {
+            orientation: "l",
+            autotable: {
+                styles: {overflow:'linebreak'},
+                headerStyles: {fillColor: 255, textColor: 0},
+                alternateRowStyles: {fillColor: 210, textColor: 0}
+            }
+        }
+    },
     columns: [
         {
             field: 'state',
@@ -106,6 +120,6 @@ $('#table').bootstrapTable({
             // clickToSelect: false,
             // events: window.operateEvents,
             formatter: operateFormatter
-          }
+        }
     ]
 })
