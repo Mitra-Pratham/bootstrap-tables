@@ -6,6 +6,13 @@
     border-width: 0px 1px 1px 1px !important;
 }
 
+.table-test-row{
+    padding:1rem;
+    border-bottom: 1px solid #eee;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+}
+
 #box{
 position: fixed;
 right: 0;
@@ -18,4 +25,9 @@ text-decoration:none ;
 
 .new-anchor:hover{
     text-decoration: underline;
+}
+
+#display-case{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
