@@ -1,4 +1,4 @@
-import generatedJson from "/js/generated.json" assert { type: "json" };
+import generatedJson from "./generated.json" assert { type: "json" };
 // var generatedJson = require('js/generated.json')
 let textArray = [];
 let tableData = [
